@@ -5,7 +5,7 @@ name: Update Data
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 10 1,5,15 * 2,5,8,11"
+    - cron: "0 10 1,5,15 * *"
   # triggers at 10:00 on day 1 of every month 
 
 
