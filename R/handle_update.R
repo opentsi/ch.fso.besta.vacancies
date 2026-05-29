@@ -20,7 +20,7 @@ handle_update <- function(key = key) {
   # Store checksum after successful update
   upd <- update_checksum(checksum)
   if(upd){
-    process_data("kofbarometer", ids = c("barometer"))
+    process_data(key=key)
   } else {
     message("Checksum initialized. Data untouched.")
   }
