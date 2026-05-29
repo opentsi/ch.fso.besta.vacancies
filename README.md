@@ -44,8 +44,7 @@ By specifying a date in addition, you can able to obtain other versions
 but the most recent one. The *opentimeseries* package will simply select
 the most recent release that was available at the selected date.
 
-``` r
-
+```r
 a202307 <- read_open_ts("596.1",
                   remote_archive = "opentsi/ch.fso.besta.vacancies",
                   date = "2023-07-01")
