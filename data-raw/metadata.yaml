@@ -8,53 +8,215 @@
 
 # Dataset identity (required)
 # These form the first three segments of every key
-country: ""   # ISO 3166-1 alpha-2 code (e.g., "ch", "de", "us")
-provider: ""  # short identifier (e.g., "adecco", "seco")
-dataset: ""   # short identifier (e.g., "sjmi", "gdp")
+country: "ch"
+provider: "fso"
+dataset: "besta_vacancies"
 
 # Dataset title (required)
-# At minimum, provide English. Add other languages as needed.
 title:
-  en: ""
-  # de: ""
-  # fr: ""
+  en: "Job vacancies by economic divisions (selection)"
+  de: "Offene Stellen nach ausgewählten Wirtschaftsabteilungen"
+  fr: "Places vacantes selon certaines divisions économiques"
+  it: "Posti liberi in alcuni divisioni economiche"
 
 # Data source name (required)
 source_name:
-  en: ""
-  # de: ""
+  en: "FSO"
+  de: "BFS"
+  fr: "OFS"
+  it: "UST"
 
 # URL to original data source (required)
-source_url: "https://"
+source_url: "https://www.fso.admin.ch"
 
 # Data frequency (required)
 # D = daily, W = weekly, M = monthly, Q = quarterly, Y = yearly, I = irregular
-dataset_frequency: "M"
+dataset_frequency: "Q"
 
 # Units of measurement
 # Use "all" if uniform across variables, or specify per variable key
 units:
-  all:
-    en: ""
+  '1':
+    en: "Job vacancies"
+  '2':
+    en: "Index (2nd quarter 2015 = 100)"
+    de: "Index (2. Quartal 2015 = 100)"
+    fr: "Indice (2ème trimestre 2015 = 100)"
+    it: "Indice (2° trimestre 2015 = 100)"
+  '3':
+    en: "Rate (in %)"
+    de: "Quote (in %)"
+    fr: "Taux (en %)"
+    it: "Tasso (in %)"
 
 # Aggregation method for temporal aggregation
 # Valid values: mean, sum, last, first
 aggregate:
-  all: "mean"
+  all: "sum"
 
 # Dimension order (left to right in the key, after country.provider.dataset)
-dim_order: []
+dim_order:
+  - sector
+  - type
 
 # Hierarchical structure of dimensions
-# Nest dimensions according to your key structure
-hierarchy: {}
+hierarchy:
+  type:
+    '1': ~
+    '2': ~
+    '3': ~
+  sector:
+    '596':
+      '543':
+        '1033': ~
+        '2425': ~
+        '26': ~
+        '28': ~
+        '4143': ~
+      '4596':
+        '4547': ~
+        '4953': ~
+        '5556': ~
+        '5863': ~
+        '6263': ~
+        '6466': ~
+        '6875': ~
+        '777982': ~
+        '84': ~
+        '85': ~
+        '8688': ~
+        '9096': ~
 
 # Human-readable labels for dimensions and their values
-# dimnames: labels for dimension names
-# <dimension_name>: labels for values within that dimension
 labels:
-  dimnames: {}
+  dimnames:
+    sector:
+      en: "Economic division"
+      de: "Wirtschaftsabteilung"
+      fr: "Division économique"
+      it: "Divisione economica"
+    type:
+      en: "Job vacancies"
+      de: "Offene Stellen"
+      fr: "Places vacantes"
+      it: "Posti liberi"
+  sector:
+    '596':
+      en: "5-96 Total"
+      de: "5-96 Total"
+      fr: "5-96 Total"
+      it: "5-96 Totale"
+    '543':
+      en: "5-43 SECTOR II"
+      de: "5-43 SEKTOR II"
+      fr: "5-43 SECTEUR II"
+      it: "5-43 SETTORE II"
+    '1033':
+      en: "10-33 Manufactury"
+      de: "10-33 Verarbeitendes Gewerbe/Herstellung von Waren"
+      fr: "10-33 Industrie manufacturière"
+      it: "10-33 Attività manifatturiere"
+    '2425':
+      en: "24-25 Manufacture of metal products"
+      de: "24-25 Herstellung von Metallerzeugnissen"
+      fr: "24-25 Fabrication de produits métalliques"
+      it: "24-25 Fabbricazione di prodotti in metallo"
+    '26':
+      en: "26 Manufacture of computer, electronic and optical products, watches and clocks"
+      de: "26 Herstellung von Datenverarbeitungsgeräten und Uhren"
+      fr: "26 Fabrication de produits électroniques, horlogerie"
+      it: "26 Fabbricazione di prodotti di elettronica, orologeria"
+    '28':
+      en: "28 Manufacture of machinery and equipment n.e.c."
+      de: "28 Maschinenbau"
+      fr: "28 Fabrication de machines et équipements n.c.a"
+      it: "28 Fabbricazione di macchinari e app. n.c.a"
+    '4143':
+      en: "41-43 Construction"
+      de: "41-43 Baugewerbe/Bau"
+      fr: "41-43 Construction"
+      it: "41-43 Costruzioni"
+    '4596':
+      en: "45-96 SECTOR III"
+      de: "45-96 SEKTOR III"
+      fr: "45-96 SECTEUR III"
+      it: "45-96 SETTORE III"
+    '4547':
+      en: "45-47 Trade and repair of motor vehicles and motorcycles"
+      de: "45-47 Handel, Instandhaltung und Rep. von Kraftfahrzeugen"
+      fr: "45-47 Commerce, réparation d'automobiles et de motocycles"
+      it: "45-47 Commercio e riparazione di autoveicoli e motocicli"
+    '4953':
+      en: "49-53 Transport and stockage"
+      de: "49-53 Verkehr und Lagerei"
+      fr: "49-53 Transport et entreposage"
+      it: "49-53 Trasporto e magazzinaggio"
+    '5556':
+      en: "55-56 Hotels and gastronomy"
+      de: "55-56 Gastgewerbe/Beherbergung und Gastronomie"
+      fr: "55-56 Hébergement et restauration"
+      it: "55-56 Servizi di alloggio e di ristorazione"
+    '5863':
+      en: "58-63 IT and communications"
+      de: "58-63 Information und Kommunikation"
+      fr: "58-63 Information et communication"
+      it: "58-63 Servizi di informazione e comunicazione"
+    '6263':
+      en: "62-63 IT and other information services"
+      de: "62-63 Informationstechnologische und Informationsdienstl."
+      fr: "62-63 Activités informatiques et services d'information"
+      it: "62-63 Attività informatiche e altri servizi informativi"
+    '6466':
+      en: "64-66 Finance and assurance"
+      de: "64-66 Erbringung von Finanz- und Versicherungsdienstl."
+      fr: "64-66 Activités financières et d'assurance"
+      it: "64-66 Attività finanziarie e assicurative"
+    '6875':
+      en: "68-75 Real estate and scientific service activities"
+      de: "68-75 Grundstk- u. Wohn.wesen, freiberufl., wiss., techn. Dienstl."
+      fr: "68-75 Act. Immobilières et act. spécialisées"
+      it: "68-75 Attività immob., prof., scientifiche e tecniche"
+    '777982':
+      en: "77+79-82 Administrative and support service activities (without 78)"
+      de: "77+79-82 Erbringung von sonst. wirtschaftlichen Dienst. (ohne 78)"
+      fr: "77+79-82 Activités de services administratifs (sans 78)"
+      it: "77+79-82 Attività amministrative e di servizi di supporto (senza 78)"
+    '84':
+      en: "84 Public administration"
+      de: "84 Öffentliche Verwaltung"
+      fr: "84 Administration publique"
+      it: "84 Amministrazione pubblica"
+    '85':
+      en: "85 Education"
+      de: "85 Erziehung und Unterricht"
+      fr: "85 Enseignement"
+      it: "85 Istruzione"
+    '8688':
+      en: "86-88 Health and social work activities"
+      de: "86-88 Gesundheits- und Sozialwesen"
+      fr: "86-88 Santé humaine et action sociale"
+      it: "86-88 Sanità e assistenza sociale"
+    '9096':
+      en: "90-96 Arts and amusement"
+      de: "90-96 Kunst, Unterhaltung u. Erholung, sonstige Dienstl."
+      fr: "90-96 Arts, spectacles..., autres act. de services"
+      it: "90-96 Att. artist., di divertim. e Altre att. di serv."
+  type:
+    '1':
+      en: "Job vacancies - total"
+      de: "Offene Stellen - Total"
+      fr: "Places vacantes - total"
+      it: "Posti liberi - totale"
+    '2':
+      en: "Index (2nd quarter 2015 = 100)"
+      de: "Index (2. Quartal 2015 = 100)"
+      fr: "Indice (2ème trimestre 2015 = 100)"
+      it: "Indice (2° trimestre 2015 = 100)"
+    '3':
+      en: "Rate (in %)"
+      de: "Quote (in %)"
+      fr: "Taux (en %)"
+      it: "Tasso (in %)"
 
-
-# update checksum is empty in the beginning
-update_checksum: ""
+# update checksum is managed programmatically
+update_checksum: "dXxh1nYq2C6qkua3GgG/s4eYhJE="

@@ -10,13 +10,13 @@
 process_data <- function(key = key) {
   set_config(api_key = key)
 
-  keys <- read_dataset_keys("ch.fso.indpau")
+  keys <- read_dataset_keys("ch.fso.besta.vacancies")
   tsl <- read_ts(keys)
 
   out_paths <- lapply(names(tsl), function(k) {
     ts_obj <- tsl[[k]]
     # remove prefix so it matches with current data
-    k <- sub("^ch\\.fso\\.indpau\\.", "", k)
+    k <- sub("^ch\\.fso\\.besta\\.vacancies\\.", "", k)
     print(k)
 
     output_path <- file.path("data-raw", "csv", paste0(k, ".csv"))
@@ -25,7 +25,7 @@ process_data <- function(key = key) {
     freq <- frequency(ts_obj)
     values <- as.numeric(ts_obj)
 
-    if (freq == 12) {
+    if (freq == 4) {
       years <- floor(ts_time)
       months <- round((ts_time - years) * 12) + 1
       ts_dates <- as.Date(sprintf("%d-%02d-01", years, months))
@@ -41,5 +41,3 @@ process_data <- function(key = key) {
 
   invisible(unlist(out_paths))
 }
-
-# try it out here
