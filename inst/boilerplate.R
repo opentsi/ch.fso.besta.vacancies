@@ -54,5 +54,5 @@ check()
 install()
 
 # write readme and add plot
-# change README.md -> README.Rmd
+# change README.Rmd -> README.md 
 devtools::build_readme()
